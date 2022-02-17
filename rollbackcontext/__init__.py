@@ -69,7 +69,7 @@ class RollbackContext(object):
                     undoExcInfo = sys.exc_info()
 
         if exc_type is None and undoExcInfo is not None:
-            raise undoExcInfo[0], undoExcInfo[1], undoExcInfo[2]
+            raise undoExcInfo[0](undoExcInfo[1], undoExcInfo[2])
 
     def _push(self, func, toTop, args, kwargs):
         undo = self.Undo(func, [False], args, kwargs)
